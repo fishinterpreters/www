@@ -343,6 +343,43 @@
         </div>
     </section>
 
+    <script>
+  const languages = [
+    "Afrikaans", "Akan", "Albanian", "Amharic", "Arabic", "Armenian",
+    "Aymara", "Azerbaijani", "Bambara", "Basque", "Belarusian", "Bengali",
+    "Berber", "Bosnian", "Bulgarian", "Burmese", "Cambodian (Khmer)", "Cantonese",
+    "Catalan", "Cherokee", "Chichewa", "Chinese (Mandarin)", "Croatian", "Czech",
+    "Danish", "Dari", "Dinka", "Dutch", "English", "Estonian",
+    "Ewe", "Farsi (Persian)", "Filipino (Tagalog)", "Finnish", "French", "Fula",
+    "Georgian", "German", "Greek", "Guarani", "Hausa", "Hawaiian",
+    "Hebrew", "Hindi", "Hungarian", "Icelandic", "Igbo", "Indonesian"
+  ];
+
+  const container = document.getElementById("languages-container");
+  const searchInput = document.getElementById("language-search");
+
+  function renderLanguages(filter = "") {
+    container.innerHTML = "";
+
+    languages
+      .filter(lang => lang.toLowerCase().includes(filter.toLowerCase()))
+      .forEach(lang => {
+        const div = document.createElement("div");
+        div.className =
+          "bg-white text-center py-2 px-4 rounded-full shadow text-sm font-medium text-gray-700 hover:bg-blue-100 cursor-pointer transition";
+        div.textContent = lang;
+        container.appendChild(div);
+      });
+  }
+
+  renderLanguages();
+
+  searchInput.addEventListener("input", (e) => {
+    renderLanguages(e.target.value.trim());
+  });
+</script>
+
+
     <!-- About Section -->
     <section id="about" class="py-16 bg-white">
         <div class="container mx-auto px-4">
@@ -842,3 +879,4 @@
     </script>
 </body>
 </html>
+
